@@ -16,7 +16,7 @@
 {{ Form::text('password',null,['class' => 'input']) }}
 
 {{ Form::label('パスワード確認') }}
-{{ Form::text('password-confirm',null,['class' => 'input']) }}
+{{ Form::text('password_confirmation',null,['class' => 'input']) }}
 
 {{ Form::submit('登録') }}
 
@@ -24,5 +24,8 @@
 
 {!! Form::close() !!}
 
+@foreach ($errors->all() as $error)
+  <li>{{$error}}</li>
+@endforeach
 
 @endsection
