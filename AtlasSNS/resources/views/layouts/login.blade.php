@@ -22,13 +22,11 @@
 <body>
     <header>
         <div id = "head">
-        <h1><a href="/top"><img src="images/logo.png"></a></h1>
-            <div id="">
-                <div id="">
-                    <p>〇〇さん<img src="images/arrow.png"></p>
-                <div>
-                <ul>
-                    <li><a href="/top">ホーム</a></li>
+            <h1><a href="/top"><img src="images/Atlas.png"></a></h1>
+            <div class ="menu"><label for="acd-check">{{Auth::user()->username}}さん<div class = "border border-left"></div><div class = "border border-right"></div></label>
+            <img src="images/icon1.png"><input id="acd-check" type="checkbox">
+                <ul id ="links">
+                    <li><a href="/top">HOME</a></li>
                     <li><a href="/profile">プロフィール</a></li>
                     <li><a href="/logout">ログアウト</a></li>
                 </ul>
@@ -41,7 +39,7 @@
         </div >
         <div id="side-bar">
             <div id="confirm">
-                <p>〇〇さんの</p>
+                <p>{{Auth::user()->username}}さんの</p>
                 <div>
                 <p>フォロー数</p>
                 <p>〇〇名</p>
