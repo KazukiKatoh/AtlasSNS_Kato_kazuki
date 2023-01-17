@@ -11,7 +11,7 @@ class PostsController extends Controller
 {
     //
     public function index(Request $request){
-        $list = \DB::table('posts')->get();
+        $list = \DB::table('posts')->latest('updated_at')->get();
         return view('posts.index',['list'=>$list]);
     }
     public function create(Request $request){

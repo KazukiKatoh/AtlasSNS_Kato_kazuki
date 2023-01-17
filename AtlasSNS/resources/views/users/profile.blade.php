@@ -11,6 +11,7 @@
     <td class="myprofile">bio<input type="text" value="{{Auth::user()->bio}}"></td><br>
     <td class="myprofile">icon image<input type="file" name="image"></td>
   </tr>
+  <input type="button" value="更新する" >
 </form>
 
 @endsection

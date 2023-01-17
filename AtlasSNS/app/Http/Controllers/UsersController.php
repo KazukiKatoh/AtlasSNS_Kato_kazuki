@@ -22,6 +22,6 @@ class UsersController extends Controller
         $keyword = $request->input('keyword');
         $list = \DB::table('users')->where('username','like','%'.$keyword.'%')
         ->get();
-        return view('users.search',['list'=>$list]);
+        return view('users.search',['list'=>$list, 'keyword'=>$keyword]);
     }
 }

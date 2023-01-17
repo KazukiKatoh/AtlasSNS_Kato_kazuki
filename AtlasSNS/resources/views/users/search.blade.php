@@ -12,8 +12,10 @@
       </span>
     </button>
   </form>
-  <p><? if (isset($keyword)) { echo ('検索ワード：.$keyword.'); } ?></p>
 </div>
+@if (isset($keyword))
+<p>検索ワード:{{ $keyword }}</p>
+@endif
     <table>
       @foreach ($list as $list)
       <tr>
