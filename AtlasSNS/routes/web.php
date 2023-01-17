@@ -33,11 +33,16 @@ Route::post('/added', 'Auth\RegisterController@added');
 //ログイン中のページ
 Route::group(['middleware' => 'auth'], function (){
 Route::get('/top','PostsController@index');
+Route::post('/form', 'PostsController@create');
+Route::post('/edit/{id}', 'PostsController@edit')->name('edit');
+Route::get('/post/{id}/delete', 'PostsController@delete');
+
 Route::get('/logout','Auth\LoginController@logout');
 
 Route::get('/profile','UsersController@profile');
 
-Route::get('/search','UsersController@index');
+Route::post('/searchbox','UsersController@searchbox');
+Route::get('/search','UsersController@search');
 
 Route::get('/follow-list','PostsController@index');
 Route::get('/follower-list','PostsController@index');

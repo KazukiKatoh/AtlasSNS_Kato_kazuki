@@ -17,6 +17,13 @@ h1 img{
     margin-left: 21px;
     width: 90px;
 }
+button{
+    background-color: #fff;
+}
+.fa-stack{
+    margin: 0 auto;
+    padding: 0;
+}
 .menu{
     position: absolute;
     top: 0;
@@ -61,7 +68,7 @@ label{
     border-right: 2px solid #fff;
     transform: rotate(30deg);
 }
-input{
+.menu input{
     display: none;
 }
 .menu ul{
@@ -71,10 +78,10 @@ input{
 .menu li{
     display: none;
 }
-#acd-check:checked + .border-left {
+#acd-check:checked + label .border-left {
     transform: rotate(30deg);
 }
-#acd-check:checked + .border-right {
+#acd-check:checked + label .border-right {
     transform: rotate(-30deg);
 }
 #acd-check:checked ~ #links li{
@@ -96,6 +103,18 @@ input{
     color: #fff;
     background-color: navy;
 }
+button{
+    border: none;
+}
+button img{
+    display: block;
+    height: 80px;
+    width: 80px;
+}
+table img{
+    height: 40px;
+    width: 40px;
+}
 /* main content */
 #row{
     display: flex;
@@ -107,4 +126,33 @@ input{
 #side-bar{
     flex: 0 0 19%;
     border-left: 1px solid #727272;
+}
+.content {
+    margin: 0 auto;
+    padding: 40px;
+}
+
+.modal {
+    display: none;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.modal__bg {
+    background: rgba(0, 0, 0, 0.8);
+    height: 100vh;
+    position: absolute;
+    width: 100%;
+}
+
+.modal__content {
+    background: #fff;
+    left: 50%;
+    padding: 40px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
 }
