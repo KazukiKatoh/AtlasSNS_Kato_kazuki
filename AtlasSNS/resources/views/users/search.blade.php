@@ -14,15 +14,24 @@
   </form>
 </div>
 @if (isset($keyword))
-<p>検索ワード:{{ $keyword }}</p>
+<p class="searchbox">検索ワード:{{ $keyword }}</p>
 @endif
     <table>
-      @foreach ($list as $list)
+      @foreach ($users as $user)
       <tr>
-        <td>{{ $list->username }}</td>
-        <td class="content"></td>
+        <td>{{ $user->username }}</td>
+        @if(auth()->user()->isFollowing($user))
+        <form action="/unFollow/{{ $user->id }}" method="POST">
+          @csrf
+          <td><button type="submit" name="id" value="{{ $user->id }}" class="unfollow">フォロー解除</button></td>
+        </form>
+        @else
+        <form action="/follow/{{ $user->id }}" method="POST">
+          @csrf
+          <td><button type="submit" name="id" value="{{ $user->id }}" class="follow">フォローする</button></td>
+        </form>
+        @endif
       </tr>
-
   @endforeach
     </table>
 @endsection

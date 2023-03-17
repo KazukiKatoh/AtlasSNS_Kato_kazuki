@@ -48,14 +48,26 @@
                 <p>{{Auth::user()->username}}さんの</p>
                 <div>
                     <p>フォロー数</p>
-                    <p>〇〇名</p>
+                    <p>
+                        @if (Auth::user()->followingCount() > 0)
+                        {{ Auth::user()->followingCount() }}名
+                        @else
+                        0名
+                        @endif
+                    </p>
                 </div>
-                <p class="btn"><a href="">フォローリスト</a></p>
+                <p class="btn"><a href="/followList">フォローリスト</a></p>
                 <div>
                     <p>フォロワー数</p>
-                    <p>〇〇名</p>
+                    <p>
+                        @if (Auth::user()->followersCount() > 0)
+                        {{ Auth::user()->followersCount() }}名
+                        @else
+                        0名
+                        @endif
+                    </p>
                 </div>
-                <p class="btn"><a href="">フォロワーリスト</a></p>
+                <p class="btn"><a href="/followerList">フォロワーリスト</a></p>
             </div>
             <p class="btn"><a href="/search" name="search">ユーザー検索</a></p>
         </div>

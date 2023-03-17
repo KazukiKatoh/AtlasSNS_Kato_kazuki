@@ -4,7 +4,26 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use Auth;
+use App\Post;
+use App\User;
+
 class Follow extends Model
 {
-    //
+    use HasFactory;
+
+    protected $fillable = [
+        'followed_id',
+        'following_id',
+    ];
+
+    public function follower()
+    {
+        return $this->belongsTo(User::class, 'followed_id');
+    }
+
+    public function following()
+    {
+        return $this->belongsTo(User::class, 'following_id');
+    }
 }

@@ -5,7 +5,7 @@
   @csrf
   <div>
     <input type="text" name="createPost" placeholder="投稿内容を入力してください">
-    <button type="submit"><img src="images/post.png"></button>
+    <button type="submit" class="btn"><img src="images/post.png"></button>
   </div>
 </form>
 <table class='table table-hover'>

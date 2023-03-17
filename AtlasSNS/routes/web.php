@@ -40,10 +40,14 @@ Route::get('/post/{id}/delete', 'PostsController@delete');
 Route::get('/logout','Auth\LoginController@logout');
 
 Route::get('/profile','UsersController@profile');
+Route::post('/profileedit', 'UsersController@profileedit')->name('profileedit');
 
 Route::post('/searchbox','UsersController@searchbox');
 Route::get('/search','UsersController@search');
 
-Route::get('/follow-list','PostsController@index');
-Route::get('/follower-list','PostsController@index');
+Route::get('/followList','FollowsController@followList');
+Route::get('/followerList','FollowsController@followerList');
+
+Route::post('/follow/{user}','FollowsController@follow')->name('follow');
+Route::post('/unFollow/{user}','FollowsController@unFollow');
 });

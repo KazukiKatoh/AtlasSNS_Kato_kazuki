@@ -23,6 +23,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user = Auth::user();
+        $followingCount = $user->following()->count();
+        $followerCount = $user->followers()->count();
+        return view('home', compact('followingCount', 'followerCount'));
     }
 }

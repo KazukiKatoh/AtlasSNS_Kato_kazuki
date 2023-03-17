@@ -8,7 +8,7 @@ body{
 /* header */
 header{
     position: relative;
-    background:#186AC9;
+    background:#1667C6;
     height: 76px;
 }
 h1 img{
@@ -19,6 +19,7 @@ h1 img{
 }
 button{
     background-color: #fff;
+    border: none;
 }
 .fa-stack{
     margin: 0 auto;
@@ -103,8 +104,25 @@ label{
     color: #fff;
     background-color: navy;
 }
-button{
-    border: none;
+#container form{
+    margin-bottom: 20px;
+}
+tr{
+    height: 60px;
+}
+.follow{
+    padding: 4px;
+    border: #52ABF8;
+    background-color: #52ABF8;
+    color: #fff;
+    border-radius: 5px;
+}
+.unfollow {
+    padding: 4px;
+    border: #ED3833;
+    background-color: #ED3833;
+    color: #fff;
+    border-radius: 5px;
 }
 button img{
     display: block;
