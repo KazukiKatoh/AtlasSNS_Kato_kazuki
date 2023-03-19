@@ -8,7 +8,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Auth;
 use App\Post;
 use App\User;
-use App\Follow;
 
 class User extends Authenticatable
 {
@@ -32,10 +31,10 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
     public function following(){
-        return $this->belongsToMany(User::class, 'follows', 'following_id', 'followed_id');
+        return $this->belongsToMany(User::class, 'follows', 'following_id', 'followed_id')->withTimestamps();
     }
     public function followers(){
-        return $this->belongsToMany(User::class, 'follows', 'followed_id', 'following_id');
+        return $this->belongsToMany(User::class, 'follows', 'followed_id', 'following_id')->withTimestamps();
     }
     public function isFollowed(User $user){
         return $this->followers->contains($user);

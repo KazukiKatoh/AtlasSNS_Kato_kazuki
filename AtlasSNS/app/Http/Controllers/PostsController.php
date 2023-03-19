@@ -12,9 +12,21 @@ class PostsController extends Controller
 {
     //
     public function index(Request $request){
-        $list = \DB::table('posts')->latest('updated_at')->get();
-        return view('posts.index',['list'=>$list]);
-    }
+    $user = auth()->user(); // ログインユーザーを取得する
+    $list = \DB::table('posts')
+        ->latest('posts.updated_at')
+        ->join('users', 'posts.user_id', '=', 'users.id')
+        ->select('posts.*', 'users.username')
+        ->whereIn('user_id', function($query) use ($user) {
+            $query->select('followed_id')
+                ->from('follows')
+                ->where('following_id', $user->id);
+        })
+        ->orWhere('user_id', $user->id)
+        ->get();
+    return view('posts.index',['list'=>$list]);
+}
+
     public function create(Request $request){
         $post = $request->input('createPost');
         \DB::table('posts')->insert([

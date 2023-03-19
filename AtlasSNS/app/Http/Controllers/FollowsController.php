@@ -10,9 +10,7 @@ class FollowsController extends Controller
 {
     //
     public function followList(){
-        $user = auth()->user();
-        $followingList = $user->following()->paginate(10);
-        return view('follows.followList', compact('followingList'));
+        return view('follows.followList');
     }
     public function followerList(){
         return view('follows.followerList');

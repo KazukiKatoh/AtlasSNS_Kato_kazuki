@@ -30,7 +30,7 @@ class UsersController extends Controller
         $mail = $request->input('mail');
         $password = $request->input('password');
         $bio = $request->input('bio');
-        if ($image = $request->input('images')) {
+        if ($image == $request->input('images')) {
             $filename = $request->imgpath->getClientOriginalName();
             $images = $request->imgpath->storeAs('',$filename,'public');
         }

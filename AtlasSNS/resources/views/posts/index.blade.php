@@ -11,7 +11,7 @@
 <table class='table table-hover'>
   @foreach ($list as $list)
   <tr>
-    <td></td>
+    <td>{{ $list->username }}</td>
     <td>{{ $list->post }}</td>
     <td>{{ $list->updated_at }}</td>
     <td class="content">

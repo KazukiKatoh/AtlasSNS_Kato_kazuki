@@ -23,7 +23,7 @@
 <body>
     <header>
         <div id = "head">
-            <h1><a href="/top"><img src="images/Atlas.png"></a></h1>
+            <h1><a href="/top"><img src="{{ asset('images/Atlas.png') }}"></a></h1>
             <div class ="menu">
                 <input id="acd-check" type="checkbox">
                 <label for="acd-check">{{Auth::user()->username}}さん

@@ -34,6 +34,7 @@ Route::post('/added', 'Auth\RegisterController@added');
 Route::group(['middleware' => 'auth'], function (){
 Route::get('/top','PostsController@index');
 Route::post('/form', 'PostsController@create');
+
 Route::post('/edit/{id}', 'PostsController@edit')->name('edit');
 Route::get('/post/{id}/delete', 'PostsController@delete');
 
@@ -48,6 +49,6 @@ Route::get('/search','UsersController@search');
 Route::get('/followList','FollowsController@followList');
 Route::get('/followerList','FollowsController@followerList');
 
-Route::post('/follow/{user}','FollowsController@follow')->name('follow');
-Route::post('/unFollow/{user}','FollowsController@unFollow');
+Route::post('/follow/{id}','FollowsController@follow')->name('follow');
+Route::post('/unFollow/{id}','FollowsController@unFollow')->name('unfollow');
 });
