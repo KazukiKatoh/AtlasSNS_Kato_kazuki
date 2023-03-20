@@ -43,7 +43,7 @@ Route::get('/logout','Auth\LoginController@logout');
 Route::get('/profile','UsersController@profile');
 Route::post('/profileedit', 'UsersController@profileedit')->name('profileedit');
 
-Route::post('/searchbox','UsersController@searchbox');
+Route::post('/search_result','UsersController@searchresult');
 Route::get('/search','UsersController@search');
 
 Route::get('/followList','FollowsController@followList');

@@ -2,7 +2,7 @@
 
 @section('content')
 <div>
-  <form action="searchbox" method="POST">
+  <form action="search_result" method="POST">
     @csrf
     <input type="text" name="keyword" placeholder="ユーザー名">
     <button type="submit">

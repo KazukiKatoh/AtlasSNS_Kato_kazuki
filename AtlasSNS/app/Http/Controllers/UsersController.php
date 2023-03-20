@@ -59,7 +59,7 @@ class UsersController extends Controller
         $post = $request->input('search');
         return view('users.search',['users' => $users]);
     }
-    public function searchbox(Request $request){
+    public function searchresult(Request $request){
         $loggedInUserId = auth()->user()->id;
         $keyword = $request->input('keyword');
         $users = User::whereNotIn('id', [$loggedInUserId]);
