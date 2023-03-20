@@ -30,20 +30,28 @@ class UsersController extends Controller
         $mail = $request->input('mail');
         $password = $request->input('password');
         $bio = $request->input('bio');
-        if ($image == $request->input('images')) {
-            $filename = $request->imgpath->getClientOriginalName();
-            $images = $request->imgpath->storeAs('',$filename,'public');
-        }
+
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
-        User::where('id', $id)->update([
-            'username' => $username,
-            'mail' => $mail,
-            'password' => bcrypt($password),
-            'bio' => $bio,
-            //'images' => $images
-        ]);
+        if ($request->hasFile('imgpath')) {
+            $filename = $request->imgpath->getClientOriginalName();
+            $images = $request->imgpath->storeAs('', $filename, 'public');
+            User::where('id', $id)->update([
+                'username' => $request->input('username'),
+                'mail' => $request->input('mail'),
+                'password' => bcrypt($request->input('password')),
+                'bio' => $request->input('bio'),
+                'images' => $request->input('images')
+            ]);
+        } else {
+            User::where('id', $id)->update([
+                'username' => $request->input('username'),
+                'mail' => $request->input('mail'),
+                'password' => bcrypt($request->input('password')),
+                'bio' => $request->input('bio')
+            ]);
+        }
             return redirect('/top');
     }
     public function search(Request $request){

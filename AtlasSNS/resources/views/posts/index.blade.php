@@ -20,7 +20,6 @@
     </td>
     <td><a class="btn btn-danger" href="/post/{{ $list->id }}/delete" onclick="return confirm('この投稿を削除します。よろしいでしょうか？')"><img src="images/trash-h.png" alt="投稿削除"></a></td>
   </tr>
-
   @endforeach
 </table>
 <!-- モーダルの中身 -->

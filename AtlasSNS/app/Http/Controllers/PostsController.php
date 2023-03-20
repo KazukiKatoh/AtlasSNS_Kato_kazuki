@@ -12,7 +12,7 @@ class PostsController extends Controller
 {
     //
     public function index(Request $request){
-    $user = auth()->user(); // ログインユーザーを取得する
+    $user = auth()->user();
     $list = \DB::table('posts')
         ->latest('posts.updated_at')
         ->join('users', 'posts.user_id', '=', 'users.id')
