@@ -56,7 +56,7 @@
                         @endif
                     </p>
                 </div>
-                <p class="btn"><a href="/followList">フォローリスト</a></p>
+                <p class="btn"><a href="/followlist">フォローリスト</a></p>
                 <div>
                     <p>フォロワー数</p>
                     <p>
@@ -67,7 +67,7 @@
                         @endif
                     </p>
                 </div>
-                <p class="btn"><a href="/followerList">フォロワーリスト</a></p>
+                <p class="btn"><a href="/followerlist">フォロワーリスト</a></p>
             </div>
             <p class="btn"><a href="/search" name="search">ユーザー検索</a></p>
         </div>

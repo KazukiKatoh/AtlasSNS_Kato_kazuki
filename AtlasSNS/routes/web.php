@@ -46,8 +46,8 @@ Route::post('/profileedit', 'UsersController@profileedit')->name('profileedit');
 Route::post('/search_result','UsersController@searchresult');
 Route::get('/search','UsersController@search');
 
-Route::get('/followList','FollowsController@followList');
-Route::get('/followerList','FollowsController@followerList');
+Route::get('/followlist','FollowsController@followlist');
+Route::get('/followerlist','FollowsController@followerlist');
 
 Route::post('/follow/{id}','FollowsController@follow')->name('follow');
 Route::post('/unFollow/{id}','FollowsController@unFollow')->name('unfollow');

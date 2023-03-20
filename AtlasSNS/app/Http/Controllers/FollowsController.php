@@ -25,7 +25,7 @@ class FollowsController extends Controller
         foreach ($list as $post) {
         $post->images = asset('/storage/images/' . $post->images);
     }
-        return view('follows.followList', ['list' => $list]);
+        return view('follows.followlist', ['list' => $list]);
     }
     public function followerList(){
         $user = Auth()->user();
@@ -39,7 +39,7 @@ class FollowsController extends Controller
                 ->where('followed_id', $user->id);
         })
         ->get();
-        return view('follows.followerList', ['list' => $list]);
+        return view('follows.followerlist', ['list' => $list]);
     }
 
     public function follow(Request $request){
