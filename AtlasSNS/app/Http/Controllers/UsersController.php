@@ -35,14 +35,14 @@ class UsersController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
         if ($request->hasFile('imgpath')) {
-            $filename = $request->imgpath->getClientOriginalName();
-            $images = $request->imgpath->storeAs('', $filename, 'public');
+            $filename = $request->file('imgpath')->getClientOriginalName();
+            $images = $request->file('imgpath')->storeAs('public/images', $filename);
             User::where('id', $id)->update([
                 'username' => $request->input('username'),
                 'mail' => $request->input('mail'),
                 'password' => bcrypt($request->input('password')),
                 'bio' => $request->input('bio'),
-                'images' => $request->input('images')
+                'images' => $images
             ]);
         } else {
             User::where('id', $id)->update([

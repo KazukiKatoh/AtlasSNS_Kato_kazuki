@@ -20,7 +20,7 @@
     <td class="myprofile">bio<input type="text"  name="bio" value="{{Auth::user()->bio}}"></td><br>
     <td class="myprofile">icon image<input type="file" name="image"></td>
   </tr>
-  <button type="submit">更新する</button>
+  <button type="submit" class="btn update">更新する</button>
   {{ csrf_field() }}
 </form>
 

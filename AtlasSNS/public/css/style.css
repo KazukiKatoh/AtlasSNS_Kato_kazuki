@@ -17,10 +17,6 @@ h1 img{
     margin-left: 21px;
     width: 90px;
 }
-button{
-    background-color: #fff;
-    border: none;
-}
 .fa-stack{
     margin: 0 auto;
     padding: 0;
@@ -107,32 +103,7 @@ label{
 #container form{
     margin-bottom: 20px;
 }
-tr{
-    height: 60px;
-}
-.follow{
-    padding: 4px;
-    border: #52ABF8;
-    background-color: #52ABF8;
-    color: #fff;
-    border-radius: 5px;
-}
-.unfollow {
-    padding: 4px;
-    border: #ED3833;
-    background-color: #ED3833;
-    color: #fff;
-    border-radius: 5px;
-}
-button img{
-    display: block;
-    height: 80px;
-    width: 80px;
-}
-table img{
-    height: 40px;
-    width: 40px;
-}
+
 /* main content */
 #row{
     display: flex;
@@ -149,7 +120,6 @@ table img{
     margin: 0 auto;
     padding: 40px;
 }
-
 .modal {
     display: none;
     height: 100vh;
@@ -173,4 +143,47 @@ table img{
     top: 50%;
     transform: translate(-50%, -50%);
     width: 60%;
+}
+
+tr {
+    height: 60px;
+}
+
+button {
+    background-color: #fff;
+    border: none;
+}
+
+.btn {
+    padding: 4px;
+    border-radius: 5px;
+}
+
+.update {
+    border: #ED3833;
+    background-color: #ED3833;
+    color: #fff;
+}
+
+.follow {
+    border: #52ABF8;
+    background-color: #52ABF8;
+    color: #fff;
+}
+
+.unfollow {
+    border: #ED3833;
+    background-color: #ED3833;
+    color: #fff;
+}
+
+button img {
+    display: block;
+    height: 80px;
+    width: 80px;
+}
+
+table img {
+    height: 40px;
+    width: 40px;
 }
