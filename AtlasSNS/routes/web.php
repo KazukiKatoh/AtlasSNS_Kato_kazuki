@@ -31,24 +31,24 @@ Route::get('/added', 'Auth\RegisterController@added');
 Route::post('/added', 'Auth\RegisterController@added');
 
 //ログイン中のページ
-Route::group(['middleware' => 'auth'], function (){
-Route::get('/top','PostsController@index');
-Route::post('/form', 'PostsController@create');
+Route::group(['middleware' => 'auth'], function () {
+  Route::get('/top', 'PostsController@index');
+  Route::post('/form', 'PostsController@create');
 
-Route::post('/edit/{id}', 'PostsController@edit')->name('edit');
-Route::get('/post/{id}/delete', 'PostsController@delete');
+  Route::post('/edit/{id}', 'PostsController@edit')->name('edit');
+  Route::get('/post/{id}/delete', 'PostsController@delete');
 
-Route::get('/logout','Auth\LoginController@logout');
+  Route::get('/logout', 'Auth\LoginController@logout');
 
-Route::get('/profile','UsersController@profile');
-Route::post('/profileedit', 'UsersController@profileedit')->name('profileedit');
+  Route::get('/profile', 'UsersController@profile');
+  Route::post('/profileedit', 'UsersController@profileedit')->name('profileedit');
 
-Route::post('/search_result','UsersController@searchresult');
-Route::get('/search','UsersController@search');
+  Route::post('/search_result', 'UsersController@searchresult');
+  Route::get('/search', 'UsersController@search');
 
-Route::get('/followlist','FollowsController@followlist');
-Route::get('/followerlist','FollowsController@followerlist');
+  Route::get('/followlist', 'FollowsController@followlist');
+  Route::get('/followerlist', 'FollowsController@followerlist');
 
-Route::post('/follow/{id}','FollowsController@follow')->name('follow');
-Route::post('/unFollow/{id}','FollowsController@unFollow')->name('unfollow');
+  Route::post('/follow/{id}', 'FollowsController@follow')->name('follow');
+  Route::post('/unFollow/{id}', 'FollowsController@unFollow')->name('unfollow');
 });

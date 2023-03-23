@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="utf-8" />
+    <meta charset="utf-8" />
     <!--IEブラウザ対策-->
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="description" content="ページの内容を表す文章" />
@@ -20,18 +21,23 @@
     <link rel="apple-touch-icon-precomposed" href="画像のURL" />
     <!--OGPタグ/twitterカード-->
 </head>
+
 <body>
     <header>
-        <div id = "head">
+        <div id="head">
             <h1><a href="/top"><img src="{{ asset('images/Atlas.png') }}"></a></h1>
-            <div class ="menu">
+            <div class="menu">
                 <input id="acd-check" type="checkbox">
                 <label for="acd-check">{{Auth::user()->username}}さん
-                    <div class = "border border-left"></div>
-                    <div class = "border border-right"></div>
+                    <div class="border border-left"></div>
+                    <div class="border border-right"></div>
                 </label>
-                <img src="images/icon1.png">
-                <ul id ="links">
+                @if (Auth::user()->images === 'dawn.png')
+                <img src="{{ asset('images/icon1.png') }}" alt="サンライズ画像">
+                @else
+                <img src="{{ asset('/storage/' . Auth::user()->images) }}" alt="{{ Auth::user()->images }}">
+                @endif
+                <ul id="links">
                     <li><a href="/top">HOME</a></li>
                     <li><a href="/profile" name="profile">プロフィール編集</a></li>
                     <li><a href="/logout">ログアウト</a></li>
@@ -42,7 +48,7 @@
     <div id="row">
         <div id="container">
             @yield('content')
-        </div >
+        </div>
         <div id="side-bar">
             <div id="confirm">
                 <p>{{Auth::user()->username}}さんの</p>
@@ -77,4 +83,5 @@
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
     <script src="js/script.js"></script>
 </body>
+
 </html>

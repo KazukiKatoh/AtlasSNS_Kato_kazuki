@@ -4,13 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-use Auth;
-
 class Follow extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['followed_id','following_id',];
+    protected $fillable = ['followed_id', 'following_id',];
 
     public function following()
     {
