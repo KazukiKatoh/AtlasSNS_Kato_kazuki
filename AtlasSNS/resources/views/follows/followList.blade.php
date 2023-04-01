@@ -2,10 +2,14 @@
 
 @section('content')
 <h1>Follow List</h1>
+@if ($followedUsers->isEmpty())
+<p>現在あなたがフォローしているユーザーはいません</p>
+@else
+
 @foreach ($followedUsers as $user)
 <ul class="userlist">
   <li>
-    <a href="/profile/{{ $user->id }}">
+    <a href="/otherprofile/{{ $user->id }}">
       @if ($user->images === 'dawn.png')
       <img src="{{ asset('images/icon1.png') }}" alt="サンライズ画像">
       @else
@@ -15,23 +19,29 @@
   </li>
 </ul>
 @endforeach
-@foreach($list as $post)
-<table class='table table-hover'>
-  <ul>
-    <li>
-      <a href="/profile/{{ $post->user_id }}">
+
+@foreach ($list as $post)
+<table>
+  <tr>
+    <td>
+      <a href="/otherprofile/{{ $post->user_id }}">
         @if (basename($post->images) === 'dawn.png')
         <img src="{{ asset('images/icon1.png') }}" alt="サンライズ画像">
         @else
         <img src="{{ $post->images }}" alt="プロフィール画像">
         @endif
       </a>
-    </li>
-    <li>{{ $post->username }}</li>
-    <li>{{ $post->post }}</li>
-    <li>{{ $post->updated_at }}</li>
-  </ul>
+    </td>
+    <td>
+      <div>{{ $post->username }}</div>
+      <div>{{ $post->post }}</div>
+    </td>
+    <td>
+      <div>{{ $post->updated_at }}</div>
+    </td>
+  </tr>
 </table>
+<hr>
 @endforeach
-
+@endif
 @endsection

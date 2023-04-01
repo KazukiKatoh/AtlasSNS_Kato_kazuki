@@ -20,24 +20,22 @@
   @foreach ($users as $user)
   <tr>
     <td>
-      <a href="/profile/{{ $user->id }}">
-        @if ($user->images === 'dawn.png')
-        <img src="{{ asset('images/icon1.png') }}" alt="サンライズ画像">
-        @else
-        <img src="{{ asset('/storage/' . $user->images) }}" alt="{{ $user->images }}">
-        @endif
-      </a>
+      @if ($user->images === 'dawn.png')
+      <img src="{{ asset('images/icon1.png') }}" alt="サンライズ画像">
+      @else
+      <img src="{{ asset('/storage/' . $user->images) }}" alt="{{ $user->images }}">
+      @endif
     </td>
     <td>{{ $user->username }}</td>
     @if(auth()->user()->isFollowing($user))
     <form action="/unFollow/{{ $user->id }}" method="POST">
       @csrf
-      <td><button type="submit" name="id" value="{{ $user->id }}" class="unfollow">フォロー解除</button></td>
+      <td><button type="submit" name="id" value="{{ $user->id }}" class="btn unfollow">フォロー解除</button></td>
     </form>
     @else
     <form action="/follow/{{ $user->id }}" method="POST">
       @csrf
-      <td><button type="submit" name="id" value="{{ $user->id }}" class="follow">フォローする</button></td>
+      <td><button type="submit" name="id" value="{{ $user->id }}" class="btn follow">フォローする</button></td>
     </form>
     @endif
   </tr>

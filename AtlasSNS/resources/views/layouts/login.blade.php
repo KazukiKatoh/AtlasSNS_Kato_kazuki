@@ -53,8 +53,7 @@
             <div id="confirm">
                 <p>{{Auth::user()->username}}さんの</p>
                 <div>
-                    <p>フォロー数</p>
-                    <p>
+                    <p>フォロー数　　
                         @if (Auth::user()->followingCount() > 0)
                         {{ Auth::user()->followingCount() }}名
                         @else
@@ -62,10 +61,9 @@
                         @endif
                     </p>
                 </div>
-                <p><a href="/followlist">フォローリスト</a></p>
+                <p><a href="/followlist" class="btn">フォローリスト</a></p>
                 <div>
-                    <p>フォロワー数</p>
-                    <p>
+                    <p>フォロワー数　
                         @if (Auth::user()->followersCount() > 0)
                         {{ Auth::user()->followersCount() }}名
                         @else
@@ -73,9 +71,10 @@
                         @endif
                     </p>
                 </div>
-                <p><a href="/followerlist">フォロワーリスト</a></p>
+                <p><a href="/followerlist" class="btn">フォロワーリスト</a></p>
             </div>
-            <p><a href="/search" name="search">ユーザー検索</a></p>
+            <hr>
+            <p><a href="/search" name="search" class="btn">ユーザー検索</a></p>
         </div>
     </div>
     <footer>

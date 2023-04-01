@@ -26,46 +26,47 @@ class UsersController extends Controller
             "bio" => "max:150",
             "images" => "file|mines:jpg,png,gif,svg,bmp"
         ];
-        $validator = Validator::make($request->all(), $rules);
-        $username = $request->input('username');
-        $mail = $request->input('mail');
-        $password = $request->input('password');
-        $bio = $request->input('bio');
-
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
+        $validator = Validator::make($request->all(), $rules)->validate();
+        $user = User::find($id);
+        $user->username = $request->input('username');
+        $user->mail = $request->input('mail');
+        if ($request->input('password')) {
+            $user->password = bcrypt($request->input('password'));
         }
-        User::where('id', $id)->update([
-            'username' => $request->input('username'),
-            'mail' => $request->input('mail'),
-            'password' => bcrypt($request->input('password')),
-            'bio' => $request->input('bio'),
-        ]);
+        $user->bio = $request->input('bio');
         if ($request->hasFile('imgpath')) {
-            $filename = $request->imgpath->getClientOriginalName();
-            $imgPath = $request->imgpath->storeAs('', $filename, 'public');
-            $user = Auth::user();
-            $user->images = $imgPath;
-            $user->save();
+            $user->images = $request->imgpath->getClientOriginalName();
+            $request->imgpath->storeAs('public', $user->images);
         }
+        $user->save();
         return redirect('/top');
     }
+
     public function search(Request $request)
     {
-        $users = User::where('id', '!=', Auth::user()->id)->get();
-        $post = $request->input('search');
-        return view('users.search', ['users' => $users]);
+        $users = User::where('id', '!=', Auth::id())->get();
+        return view('users.search', compact('users'));
     }
     public function searchresult(Request $request)
     {
-        $loggedInUserId = auth()->user()->id;
         $keyword = $request->input('keyword');
-        $users = User::whereNotIn('id', [$loggedInUserId]);
-        if ($keyword) {
-            $users = $users->where('username', 'LIKE', '%' . $keyword . '%')->get();
-        } else {
-            $users = $users->get();
+        $users = User::where('id', '!=', auth()->id())
+            ->when($keyword, function ($query, $keyword) {
+                return $query->where('username', 'LIKE', '%' . $keyword . '%');
+            })
+            ->get();
+        return view('users.search', compact('users', 'keyword'));
+    }
+
+    public function otherprofile($id)
+    {
+        $user = User::find($id);
+        if (!$user || $user->id == auth()->id()) {
+            return redirect()->back();
         }
-        return view('users.search', ['users' => $users, 'keyword' => $keyword]);
+        return view('users.otherprofile', [
+            'user' => $user,
+            'posts' => $user->posts()->latest()->get()
+        ]);
     }
 }

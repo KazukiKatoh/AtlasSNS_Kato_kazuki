@@ -1,9 +1,9 @@
 @charset "utf-8";
 html {
-    max-width: 1386px;
     margin: 0 auto;
 }
 body {
+    width: 100%;
 }
 /* header */
 header {
@@ -100,6 +100,7 @@ label {
     color: #fff;
     background-color: navy;
 }
+
 #container form {
     margin-bottom: 20px;
 }
@@ -109,17 +110,46 @@ label {
     display: flex;
     flex-flow: row wrap;
 }
+
 #container {
     flex: 0 0 80%;
 }
+
 #side-bar {
     flex: 0 0 19%;
     border-left: 1px solid #727272;
 }
+
+#side-bar div {
+    margin-bottom: 30px;
+}
+
+#side-bar p {
+    margin-top: 30px;
+}
+
+#confirm {
+    margin-bottom: 30px;
+}
+
+a.btn {
+    color: #fff;
+    background-color: #0656cf;
+    padding: 10px;
+}
+
+hr.separator {
+    border: none;
+    border-top: 1px solid #ccc;
+    width: 100%;
+    margin: 0;
+}
+
 .content {
     margin: 0 auto;
     padding: 40px;
 }
+
 .modal {
     display: none;
     height: 100vh;
@@ -133,6 +163,7 @@ label {
     position: absolute;
     width: 100%;
 }
+
 .modal__content {
     background: #fff;
     left: 50%;
@@ -142,9 +173,11 @@ label {
     transform: translate(-50%, -50%);
     width: 60%;
 }
+
 tr {
     height: 60px;
 }
+
 .userlist {
     display: inline-block;
     margin-right: 10px;
@@ -169,21 +202,25 @@ button {
     background-color: #ed3833;
     color: #fff;
 }
+
 .follow {
     border: #52abf8;
     background-color: #52abf8;
     color: #fff;
 }
+
 .unfollow {
     border: #ed3833;
     background-color: #ed3833;
     color: #fff;
 }
+
 button img {
     display: block;
     height: 80px;
     width: 80px;
 }
+
 table img {
     height: 40px;
     width: 40px;

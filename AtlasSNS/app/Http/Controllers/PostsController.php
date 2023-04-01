@@ -30,6 +30,9 @@ class PostsController extends Controller
     public function create(Request $request)
     {
         $post = $request->input('createPost');
+        if (empty($post)) {
+            return redirect()->back()->withInput()->withErrors(['createPost' => '投稿内容が空欄です。']);
+        }
         \DB::table('posts')->insert([
             'post' => $post,
             'user_id' => Auth::user()->id

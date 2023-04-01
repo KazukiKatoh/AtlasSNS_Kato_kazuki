@@ -50,4 +50,8 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(User::class, 'follows', 'followed_id', 'following_id')->count();
     }
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
 }

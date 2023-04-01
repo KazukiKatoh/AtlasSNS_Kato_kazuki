@@ -8,6 +8,10 @@
     <button type="submit" class="btn"><img src="images/post.png"></button>
   </div>
 </form>
+
+@if ($errors->has('createPost'))
+<div class="alert alert-danger">{{ $errors->first('createPost') }}</div>
+@endif
 <table class='table table-hover'>
   @foreach ($list as $list)
   <tr>
@@ -18,20 +22,30 @@
       <img src="{{ asset('storage/' . $list->images) }}" alt="プロフィール画像">
       @endif
     </td>
-    <td>{{ $list->username }}</td>
-    <td>{{ $list->post }}</td>
-    <td>{{ $list->updated_at }}</td>
+    <td>
+      <div>{{ $list->username }}</div>
+      <div>{{ $list->post }}</div>
+    </td>
+    <td>
+      <div>{{ $list->updated_at }}</div>
+    </td>
     @if (Auth::check() && Auth::user()->id == $list->user_id)
     <td class="content">
       <!-- 投稿の編集ボタン -->
       <a class="js-modal-open" href="edit" post="{{ $list->post }}" post_id="{{ $list->id }}"><img src="images/edit.png" alt="投稿する"></a>
     </td>
-    <td><a class="btn btn-danger" href="/post/{{ $list->id }}/delete" onclick="return confirm('この投稿を削除します。よろしいでしょうか？')">
+    <td><a class="btn-danger" href="/post/{{ $list->id }}/delete" onclick="return confirm('この投稿を削除します。よろしいでしょうか？')">
         <img src="images/trash.png" alt="投稿削除" onmouseover="this.src='images/trash-h.png'" onmouseout="this.src='images/trash.png'"></a></td>
     @endif
   </tr>
+  <tr>
+    <td colspan="5">
+      <hr class="separator">
+    </td>
+  </tr>
   @endforeach
 </table>
+
 <!-- モーダルの中身 -->
 <div class="modal js-modal">
   <div class="modal__bg js-modal-close"></div>

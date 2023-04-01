@@ -12,6 +12,7 @@
 </div>
 <form action="/profileedit" enctype="multipart/form-data" method="POST">
   @csrf
+  <img src="{{ asset('/storage/' . Auth::user()->images) }}" alt="">
   <tr>
     <td class="myprofile">user name<input type="text" name="username" value="{{Auth::user()->username}}"></td><br>
     <td class="myprofile">mail address<input type="text" name="mail" value="{{Auth::user()->mail}}"></td><br>
@@ -20,7 +21,7 @@
     <td class="myprofile">bio<input type="text" name="bio" value="{{Auth::user()->bio}}"></td><br>
     <td class="myprofile">icon image<input type="file" name="imgpath"></td>
   </tr>
-  <button type="submit" class="btn update">更新する</button>
+  <button type="submit" class="btn update">更新</button>
   {{ csrf_field() }}
 </form>
 
