@@ -61,7 +61,7 @@
                         @endif
                     </p>
                 </div>
-                <p><a href="/followlist" class="btn">フォローリスト</a></p>
+                <a href="/followlist" class="btn">フォローリスト</a>
                 <div>
                     <p>フォロワー数　
                         @if (Auth::user()->followersCount() > 0)
@@ -71,10 +71,10 @@
                         @endif
                     </p>
                 </div>
-                <p><a href="/followerlist" class="btn">フォロワーリスト</a></p>
+                <a href="/followerlist" class="btn">フォロワーリスト</a>
             </div>
             <hr>
-            <p><a href="/search" name="search" class="btn">ユーザー検索</a></p>
+            <p><a href="/search" id="search-button" name="search" class="btn">ユーザー検索</a></p>
         </div>
     </div>
     <footer>

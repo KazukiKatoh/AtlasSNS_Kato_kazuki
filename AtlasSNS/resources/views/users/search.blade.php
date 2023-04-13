@@ -16,7 +16,7 @@
 @if (isset($keyword))
 <p class="searchbox">検索ワード:{{ $keyword }}</p>
 @endif
-<table>
+<table class="middle-wrapper">
   @foreach ($users as $user)
   <tr>
     <td>

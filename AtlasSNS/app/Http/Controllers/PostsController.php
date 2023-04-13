@@ -14,7 +14,7 @@ class PostsController extends Controller
     {
         $user = Auth()->user();
         $list = \DB::table('posts')
-            ->latest('posts.updated_at')
+            ->latest('posts.created_at')
             ->join('users', 'posts.user_id', '=', 'users.id')
             ->select('posts.*', 'users.username', 'users.images')
             ->whereIn('user_id', function ($query) use ($user) {
@@ -33,6 +33,9 @@ class PostsController extends Controller
         if (empty($post)) {
             return redirect()->back()->withInput()->withErrors(['createPost' => '投稿内容が空欄です。']);
         }
+        if (strlen($post) > 150) {
+            return redirect()->back()->withInput()->withErrors(['createPost' => '投稿内容は150文字以内で入力してください。']);
+        }
         \DB::table('posts')->insert([
             'post' => $post,
             'user_id' => Auth::user()->id
@@ -43,9 +46,13 @@ class PostsController extends Controller
     {
         $id = $_POST['id'];
         $post = $request->input('postEdit');
+        if (empty($post)) {
+            return redirect('top');
+        }
         Post::where('id', $id)->update(['post' => $post]);
         return redirect('top');
     }
+
     public function delete($id)
     {
         Post::where('id', $id)->delete();

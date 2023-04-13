@@ -1,31 +1,38 @@
 @extends('layouts.logout')
 
 @section('content')
+<div class="center-wrapper">
 
-{!! Form::open() !!}
-
+<div class="text-center">
 <h2>新規ユーザー登録</h2>
+</div>
+@if ($errors->any())
+    <div class="alert">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>・{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+{!! Form::open() !!}
+<div class="form-group">
+{{ Form::label('username', 'user name',['class' => 'form-label']) }}
+{{ Form::text('username',null,['class' => 'form-control']) }}
 
-{{ Form::label('ユーザー名') }}
-{{ Form::text('username',null,['class' => 'input']) }}
+{{ Form::label('mail', 'mail address',['class' => 'form-label']) }}
+{{ Form::text('mail',null,['class' => 'form-control']) }}
 
-{{ Form::label('メールアドレス') }}
-{{ Form::text('mail',null,['class' => 'input']) }}
+{{ Form::label('password', 'password',['class' => 'form-label']) }}
+{{ Form::text('password',null,['class' => 'form-control']) }}
 
-{{ Form::label('パスワード') }}
-{{ Form::text('password',null,['class' => 'input']) }}
+{{ Form::label('password_confirmation', 'password confirm',['class' => 'form-label']) }}
+{{ Form::text('password_confirmation',null,['class' => 'form-control']) }}
 
-{{ Form::label('パスワード確認') }}
-{{ Form::text('password_confirmation',null,['class' => 'input']) }}
-
-{{ Form::submit('登録') }}
-
-<p><a href="/login">ログイン画面へ戻る</a></p>
+{{ Form::submit('REGISTER',['class' => 'btn btn-primary']) }}
+</div>
+<a href="/login"  class="text-center">ログイン画面へ戻る</a>
 
 {!! Form::close() !!}
-
-@foreach ($errors->all() as $error)
-<li>{{$error}}</li>
-@endforeach
-
+</div>
 @endsection

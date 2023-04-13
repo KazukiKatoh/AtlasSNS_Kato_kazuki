@@ -1,7 +1,7 @@
 @extends('layouts.login')
 
 @section('content')
-<h1>Follow List</h1>
+<h2>Follow List</h2>
 @if ($followedUsers->isEmpty())
 <p>現在あなたがフォローしているユーザーはいません</p>
 @else
@@ -37,7 +37,7 @@
       <div>{{ $post->post }}</div>
     </td>
     <td>
-      <div>{{ $post->updated_at }}</div>
+      <div>{{ $post->created_at }}</div>
     </td>
   </tr>
 </table>

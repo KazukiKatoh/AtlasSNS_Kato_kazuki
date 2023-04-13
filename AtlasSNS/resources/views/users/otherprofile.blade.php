@@ -41,6 +41,8 @@
       <div>{{ $post->username }}</div>
       <div>{{ $post->post }}</div>
       <div>{{ $post->updated_at }}</div>
+
+  <hr>
     </td>
   </tr>
 </table>
