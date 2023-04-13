@@ -44,7 +44,7 @@
   <a class="js-modal-open" href="edit" post="{{ $list->post }}" post_id="{{ $list->id }}">
     <img src="images/edit.png" alt="投稿する" style="margin-right: 10px;">
   </a>
-  <a class="btn btn-danger" href="/post/{{ $list->id }}/delete" onclick="return confirm('この投稿を削除します。よろしいでしょうか？')"><img src="images/trash-h.png" alt="投稿削除"></a>
+  <a href="post/{{ $list->id }}/delete" onclick="return confirm('この投稿を削除します。よろしいでしょうか？')"><img src="images/trash.png" alt="投稿削除" onmouseover="this.src='images/trash-h.png'" onmouseout="this.src='images/trash.png'"></a>
 </td>
 
     <!-- モーダルの中身 -->

@@ -23,24 +23,6 @@ $(function () {
     });
 });
 
-$(document).ready(function () {
-    $("a[href^='post']").click(function (e) {
-        e.preventDefault();
-        var link = $(this).attr("href");
-        var confirmation = confirm("この投稿を削除します。よろしいですか？");
-        if (!confirmation) {
-            return false;
-        } else {
-            window.location.href = link;
-        }
-        // OKとキャンセルの位置を逆にするために、ボタンの順序を変更する
-        $(".ui-dialog-buttonset button:first").addClass(
-            "ui-priority-secondary"
-        );
-        $(".ui-dialog-buttonset button:last").addClass("ui-priority-primary");
-    });
-});
-
 $(function () {
     // 画像が選択されていない場合、<img>要素を非表示にする
     $("#preview-image").hide();
