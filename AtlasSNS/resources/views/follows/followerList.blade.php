@@ -1,6 +1,7 @@
 @extends('layouts.login')
 
 @section('content')
+
 <h2>Follower List</h2>
 @if ($followerUsers->isEmpty())
 <p>現在あなたをフォローしているユーザーはいません</p>
@@ -21,7 +22,7 @@
 @endforeach
 
 @foreach ($list as $post)
-<table>
+<table class="wide-wrapper">
   <tr>
     <td>
       <a href="/otherprofile/{{ $post->user_id }}">
@@ -34,6 +35,8 @@
     </td>
     <td>
       <div>{{ $post->username }}</div>
+    </td>
+    <td>
       <div>{{ $post->post }}</div>
     </td>
     <td>

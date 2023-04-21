@@ -49,33 +49,33 @@
         <div id="container">
             @yield('content')
         </div>
-        <div id="side-bar">
-            <div id="confirm">
-                <p>{{Auth::user()->username}}さんの</p>
-                <div>
-                    <p>フォロー数　　
-                        @if (Auth::user()->followingCount() > 0)
-                        {{ Auth::user()->followingCount() }}名
-                        @else
-                        0名
-                        @endif
-                    </p>
+            <div id="side-bar">
+                <div id="confirm">
+                    <p>{{Auth::user()->username}}さんの</p>
+                    <div>
+                        <p>フォロー数　　
+                            @if (Auth::user()->followingCount() > 0)
+                            {{ Auth::user()->followingCount() }}名
+                            @else
+                            0名
+                            @endif
+                        </p>
+                    </div>
+                    <a href="/followlist" class="btn">フォローリスト</a>
+                    <div>
+                        <p>フォロワー数　
+                            @if (Auth::user()->followersCount() > 0)
+                            {{ Auth::user()->followersCount() }}名
+                            @else
+                            0名
+                            @endif
+                        </p>
+                    </div>
+                    <a href="/followerlist" class="btn">フォロワーリスト</a>
                 </div>
-                <a href="/followlist" class="btn">フォローリスト</a>
-                <div>
-                    <p>フォロワー数　
-                        @if (Auth::user()->followersCount() > 0)
-                        {{ Auth::user()->followersCount() }}名
-                        @else
-                        0名
-                        @endif
-                    </p>
-                </div>
-                <a href="/followerlist" class="btn">フォロワーリスト</a>
+                <hr>
+                <p><a href="/search" id="search-button" name="search" class="btn">ユーザー検索</a></p>
             </div>
-            <hr>
-            <p><a href="/search" id="search-button" name="search" class="btn">ユーザー検索</a></p>
-        </div>
     </div>
     <footer>
     </footer>

@@ -7,19 +7,43 @@ $(function () {
         var post = $(this).attr("post");
         // 押されたボタンから投稿のidを取得し変数へ格納（どの投稿を編集するか特定するのに必要な為）
         var post_id = $(this).attr("post_id");
-
         // 取得した投稿内容をモーダルの中身へ渡す
-        $(".modal_post").text(post);
+        $(".modal-post").text(post);
         // 取得した投稿のidをモーダルの中身へ渡す
-        $(".modal_id").val(post_id);
+        $(".modal-id").val(post_id);
+        // 背景を暗くする
+        $("body").append("<div class='modal-overlay'></div>");
         return false;
     });
-
     // 背景部分や閉じるボタン(js-modal-close)が押されたら発火
     $(".js-modal-close").on("click", function () {
         // モーダルの中身(class="js-modal")を非表示
         $(".js-modal").fadeOut();
+        // 背景を元に戻す
+        $(".modal-overlay").remove();
         return false;
+    });
+    // モーダル外をクリックした時にモーダルを閉じる
+    $(".js-modal").on("click", function (e) {
+        // モーダル内の要素がクリックされた場合は、モーダルを閉じないようにする
+        if (e.target !== this) {
+            return;
+        }
+        // モーダルの中身(class="js-modal")を非表示
+        $(".js-modal").fadeOut();
+        // フォームの初期値をクリアする
+        $(".modal-post").text("");
+        $(".modal-id").val("");
+        // 背景を元に戻す
+        $(".modal-overlay").remove();
+    });
+});
+
+$(document).ready(function () {
+    updateParentHeight(); // 初期化時に親要素の高さを更新
+
+    $(window).on("resize scroll", function () {
+        updateParentHeight(); // ウィンドウがリサイズされたりスクロールされたら親要素の高さを更新
     });
 });
 

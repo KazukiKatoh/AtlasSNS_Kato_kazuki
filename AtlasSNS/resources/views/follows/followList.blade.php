@@ -21,7 +21,7 @@
 @endforeach
 
 @foreach ($list as $post)
-<table>
+<table class="wide-wrapper">
   <tr>
     <td>
       <a href="/otherprofile/{{ $post->user_id }}">
@@ -34,6 +34,8 @@
     </td>
     <td>
       <div>{{ $post->username }}</div>
+    </td>
+    <td>
       <div>{{ $post->post }}</div>
     </td>
     <td>
