@@ -28,7 +28,7 @@
   </tr>
 </table>
 @forelse ($posts as $post)
-<table>
+<table class="wide-wrapper">
   <tr>
     <td>
       @if ($user->images === 'dawn.png')
@@ -38,14 +38,15 @@
       @endif
     </td>
     <td>
-      <div>{{ $post->username }}</div>
+      <div>{{ $user->username }}</div>
       <div>{{ $post->post }}</div>
-      <div>{{ $post->updated_at }}</div>
-
-  <hr>
+    </td>
+    <td>
+      <div>{{ $post->created_at }}</div>
     </td>
   </tr>
 </table>
+<hr>
 @empty
 <p>投稿はありません。</p>
 @endforelse

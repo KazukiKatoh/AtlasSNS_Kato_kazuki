@@ -12,8 +12,17 @@
 </div>
 <form action="/profileedit" enctype="multipart/form-data" method="POST">
   @csrf
-  <img src="{{ asset('/storage/' . Auth::user()->images) }}" alt="">
+
   <table class="middle-wrapper">
+    <tr>
+      <div class="avatar-image">
+        @if (Auth::user()->images === 'dawn.png')
+        <img src="{{ asset('images/icon1.png') }}" alt="サンライズ画像">
+        @else
+        <img src="{{ asset('/storage/' . Auth::user()->images) }}" alt="{{ Auth::user()->images }}">
+        @endif
+      </div>
+    </tr>
     <tr>
       <td>user name<input type="text" name="username" value="{{Auth::user()->username}}"></td>
     </tr>

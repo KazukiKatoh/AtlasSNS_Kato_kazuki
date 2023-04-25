@@ -21,6 +21,7 @@ $(function () {
         $(".js-modal").fadeOut();
         // 背景を元に戻す
         $(".modal-overlay").remove();
+        location.reload();
         return false;
     });
     // モーダル外をクリックした時にモーダルを閉じる
@@ -29,11 +30,6 @@ $(function () {
         if (e.target !== this) {
             return;
         }
-        // モーダルの中身(class="js-modal")を非表示
-        $(".js-modal").fadeOut();
-        // フォームの初期値をクリアする
-        $(".modal-post").text("");
-        $(".modal-id").val("");
         // 背景を元に戻す
         $(".modal-overlay").remove();
     });

@@ -33,8 +33,8 @@ class PostsController extends Controller
         if (empty($post)) {
             return redirect()->back()->withInput()->withErrors(['createPost' => '投稿内容が空欄です。']);
         }
-        if (strlen($post) > 150) {
-            return redirect()->back()->withInput()->withErrors(['createPost' => '投稿内容は150文字以内で入力してください。']);
+        if (mb_strlen($post) > 150) {
+            return redirect()->back()->withInput()->withErrors(['createPost' => '投稿内容は全角150文字以内で入力してください。']);
         }
         \DB::table('posts')->insert([
             'post' => $post,

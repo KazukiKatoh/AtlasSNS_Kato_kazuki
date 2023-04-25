@@ -9,7 +9,7 @@
     @else
     <img src="{{ asset('/storage/' . Auth::user()->images) }}" alt="{{ Auth::user()->images }}">
     @endif
-    <input type="text" name="createPost" placeholder="投稿内容を入力してください" class="post-input">
+    <textarea name="createPost" placeholder="投稿内容を入力してください" class="post-input" rows="4" cols="50"></textarea>
     <button type="submit" class="btn"><img src="images/post.png" style="width: 80px; height: 80px;"></button>
   </div>
 </form>
@@ -30,8 +30,6 @@
       </td>
       <td>
         <div>{{ $item->username }}</div>
-      </td>
-      <td>
         <div>{{ $item->post }}</div>
       </td>
       <td>
