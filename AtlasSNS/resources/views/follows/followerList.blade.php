@@ -1,26 +1,29 @@
 @extends('layouts.login')
 
 @section('content')
-<table class="userlist">
-  <tr>
-    <h2>Follower List</h2>
-    @if ($followerUsers->isEmpty())
-    <p>現在あなたをフォローしているユーザーはいません</p>
-    @endif
-    @foreach ($followerUsers as $user)
-    <td>
-      <a href="/otherprofile/{{ $user->id }}">
-        @if ($user->images === 'dawn.png')
-        <img src="{{ asset('images/icon1.png') }}" alt="サンライズ画像">
-        @else
-        <img src="{{ asset('/storage/' . $user->images) }}" alt="{{ $user->images }}">
+<div id="bottomline">
+  <table class="userlist">
+    <tr>
+      <td>
+        <h2>Follower List</h2>
+      </td>
+      <td>
+        @if ($followerUsers->isEmpty())
+        <p>現在あなたをフォローしているユーザーはいません</p>
         @endif
-      </a>
-    </td>
-    @endforeach
-  </tr>
-</table>
-
+        @foreach ($followerUsers as $user)
+        <a href="/otherprofile/{{ $user->id }}">
+          @if ($user->images === 'dawn.png')
+          <img src="{{ asset('images/icon1.png') }}" alt="サンライズ画像">
+          @else
+          <img src="{{ asset('/storage/' . $user->images) }}" alt="{{ $user->images }}">
+          @endif
+        </a>
+        @endforeach
+      </td>
+    </tr>
+  </table>
+</div>
 @foreach ($list as $post)
 <table class="wide-wrapper">
   <tr>
@@ -45,6 +48,6 @@
 <hr>
 @endforeach
 @if(count($list) === 0)
-<p>表示する投稿がありません</p>
+<div class="empty">表示する投稿がありません</div>
 @endif
 @endsection

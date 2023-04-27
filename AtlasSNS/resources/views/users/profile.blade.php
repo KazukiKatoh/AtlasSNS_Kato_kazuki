@@ -12,7 +12,6 @@
 </div>
 <form action="/profileedit" enctype="multipart/form-data" method="POST">
   @csrf
-
   <table class="middle-wrapper">
     <tr>
       <div class="avatar-image">

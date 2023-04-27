@@ -5,14 +5,16 @@ html {
 
 body {
     width: 100%;
-
     min-width: 768px;
+    height: 100%;
 }
 /* header */
 header {
-    position: relative;
+    position: fixed;
+    top: 0;
     background: #1667c6;
-    height: 76px;
+    width: 100%;
+    z-index: 2;
 }
 
 h1 img {
@@ -84,6 +86,7 @@ label {
 .menu ul {
     position: absolute;
     right: 0;
+    z-index: 3;
 }
 
 .menu li {
@@ -112,7 +115,6 @@ label {
 
 #links {
     width: 255px;
-    z-index: 2;
 }
 
 #list-wrapper {
@@ -135,15 +137,12 @@ label {
 
 #container {
     width: calc(100% - 255px);
+    margin-top: 76px;
 }
 
 #container img {
     height: 44px;
     width: 44px;
-}
-
-#container form {
-    margin-bottom: 20px;
 }
 
 h2 {
@@ -154,11 +153,10 @@ h2 {
 #side-bar {
     position: fixed;
     background-color: #fff;
-    top: 76px;
+    top: 77px;
     right: 0;
     width: 255px;
     height: 100vh;
-    z-index: 1;
 }
 
 #side-bar::before {
@@ -199,18 +197,72 @@ h2 {
 }
 
 .post-input-wrapper {
-    width: 90%;
     display: flex;
-    margin: 30px auto;
+    padding-top: 30px;
+    font-size: 20px;
+    justify-content: center;
+}
+
+.userlist td {
+    vertical-align: middle;
+}
+
+.otherprofile {
+    width: 80%;
+}
+
+.otherprofile tr {
+    display: flex;
+    justify-content: space-between;
+}
+
+.otherprofile td {
+    vertical-align: middle;
+}
+
+.otherprofile td:nth-child(1) {
+    width: 15%;
+}
+.otherprofile td:nth-child(2) {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+}
+.otherprofile td:nth-child(3) {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+.otherprofile td:last-child {
+    width: 30%;
+}
+
+#bottomline {
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: 30px;
+    box-sizing: border-box;
+    border-bottom: 10px solid #e0e0e0;
 }
 
 .post-input {
-    width: 80%;
+    width: 70%;
     height: 90px;
     border: none;
     margin-left: 20px;
     font-size: 18px;
     resize: vertical;
+}
+
+#bottomline form {
+    justify-content: left;
+    align-items: center;
+}
+
+#bottomline input[type="text"] {
+    margin-left: 100px;
+    margin-top: 30px;
+    width: 30%;
 }
 
 textarea::placeholder {
@@ -221,12 +273,6 @@ textarea::placeholder {
     transform: translate(20%, 30%);
 }
 
-.userlist {
-    width: 90%;
-    margin: 0 auto;
-    justify-content: left;
-}
-
 .form-group {
     display: inline-block;
     margin-left: 10px;
@@ -234,7 +280,7 @@ textarea::placeholder {
 
 .modal {
     display: none;
-    z-index: 1;
+    z-index: 2;
 }
 
 .modal-bg {
@@ -244,7 +290,7 @@ textarea::placeholder {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
+    z-index: 2;
 }
 
 .modal-content {
@@ -274,7 +320,6 @@ textarea::placeholder {
 }
 
 .form-group {
-    display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
@@ -288,7 +333,8 @@ textarea::placeholder {
 
 .middle-wrapper {
     position: relative;
-    margin: 60px auto 0;
+    margin-top: 60px;
+    margin-left: 170px;
     font-size: 18px;
     width: 60%;
 }
@@ -307,7 +353,11 @@ textarea::placeholder {
 .avatar-image {
     position: absolute;
     top: 8rem;
-    left: 7rem;
+    left: 7%;
+}
+
+hr {
+    margin: 0;
 }
 
 .search td {
@@ -319,22 +369,23 @@ textarea::placeholder {
     height: auto;
     min-height: 90px;
     width: 90%;
-    position: relative;
     margin-left: 10%;
 }
 
+.wide-wrapper td {
+    margin-top: 10px;
+    padding-top: 10px;
+    vertical-align: top;
+}
+
 .wide-wrapper td:first-child {
-    position: absolute;
-    top: 10px;
-    left: 0;
+    width: 44px;
 }
 
 .wide-wrapper td:nth-child(2) {
-    position: absolute;
-    top: 10px;
-    left: 64px;
+    padding-left: 30px;
     width: 70%;
-    height: auto;
+    font-size: 16px;
 }
 
 .wide-wrapper td:nth-child(2) div {
@@ -342,16 +393,17 @@ textarea::placeholder {
 }
 
 .wide-wrapper td:nth-child(3) {
-    position: absolute;
-    top: 10px;
-    right: 10px;
+    margin-right: 10px;
+    min-width: 140px;
+    float: right;
+    position: relative;
+    top: -10px;
     font-size: small;
 }
 
 .content {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
+    margin-top: 40px;
+    float: right;
 }
 
 .drop-area {
@@ -376,9 +428,11 @@ textarea::placeholder {
     background-color: #eee;
 }
 
-.userlist {
-    display: inline-block;
-    margin-right: 10px;
+.empty {
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+    font-size: 18px;
 }
 
 button {
@@ -387,8 +441,8 @@ button {
 }
 
 .btn {
-    width: 100px;
-    padding: 4px;
+    width: 120px;
+    padding: 4px 10px;
     border-radius: 5px;
     border: none;
 }
@@ -408,10 +462,4 @@ button {
 .unfollow {
     background-color: #ed3833;
     color: #fff;
-}
-
-@media (max-width: 767px) {
-    #side-bar {
-        position: static;
-    }
 }

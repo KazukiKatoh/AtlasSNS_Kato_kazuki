@@ -1,7 +1,7 @@
 @extends('layouts.login')
 
 @section('content')
-<div>
+<div id="bottomline">
   <form action="search_result" method="POST">
     @csrf
     <input type="text" name="keyword" placeholder="ユーザー名">
